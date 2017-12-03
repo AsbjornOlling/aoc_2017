@@ -9,6 +9,9 @@ import sys
 # e.g. counting the odd squares in the bottom-left corner
 # but hey - that wasn't as fun
 
+# GOLD START GOT
+# answer: 279138
+
 max_num = 32
 dir_list = ['E', 'N', 'W', 'S'] # rotate through this ccw
 dir_index = 0
