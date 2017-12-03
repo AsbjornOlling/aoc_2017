@@ -41,7 +41,7 @@ grid[coord[0]][coord[1]] = 1
 run_length = 1
 element = 2 # starting with the 2nd element
 
-while element < 10:
+while element < 1000:
     # run twice before incrementing runlength
     for n in range(0, 2):
 
@@ -61,7 +61,7 @@ while element < 10:
                 #print("moving down")
                 coord = (coord[0], coord[1]+1)
 
-            print("element: "+str(element))
+#            print("element: "+str(element))
             # find value of num
             neighbor_sum = 0
             for j in (-1, 0, 1):
@@ -70,7 +70,10 @@ while element < 10:
 #                        print("adding: " + str(grid[coord[0]+j][coord[1]+k]) + " from coord: "+ str((coord[0]+j, coord[1]+k)))
 
                         neighbor_sum += grid[coord[0] + j][coord[1] + k]
-
+            if neighbor_sum > 277678:
+                print(neighbor_sum)
+                print("VALUE GOT")
+                quit()
             print(neighbor_sum)
             # then add number on the new coord
             grid[coord[0]][coord[1]] = neighbor_sum
