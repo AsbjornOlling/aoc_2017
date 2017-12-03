@@ -21,9 +21,8 @@ coord = origin_coord
 
 # build  grid
 grid = []
-column = [None] * grid_size
 for i in range(0, grid_size):
-    grid.append(column)
+    grid.append([None] * grid_size)
 
 
 # prints the spiral to stdout
@@ -36,15 +35,17 @@ for i in range(0, grid_size):
 #   sys.stdout.write("\r\n")
 
 
-# do the first num manually
-num = 1
-grid[coord[0]][coord[1]] = num
+# do the first element manually
+grid[coord[0]][coord[1]] = 1
 
 run_length = 1
-element = 0
-while element < 20:
+element = 2 # starting with the 2nd element
+
+while element < 10:
     # run twice before incrementing runlength
     for n in range(0, 2):
+
+        # do a run of run_length
         for i in range(0, run_length):
             # increment coord
             if dir_current == 'E':
@@ -59,24 +60,29 @@ while element < 20:
             elif dir_current == 'S':
                 #print("moving down")
                 coord = (coord[0], coord[1]+1)
+
+            print("element: "+str(element))
             # find value of num
             neighbor_sum = 0
             for j in (-1, 0, 1):
                 for k in (-1, 0, 1):
                     if (j, k) != (0, 0) and grid[coord[0]+j][coord[1]+k] != None:
-                        neighbor_sum += grid[coord[0]+j][coord[1]+k]
-            num = neighbor_sum
+#                        print("adding: " + str(grid[coord[0]+j][coord[1]+k]) + " from coord: "+ str((coord[0]+j, coord[1]+k)))
+
+                        neighbor_sum += grid[coord[0] + j][coord[1] + k]
+
+            print(neighbor_sum)
             # then add number on the new coord
-            grid[coord[0]][coord[1]] = num
-            print(num)
+            grid[coord[0]][coord[1]] = neighbor_sum
+            
+            #count number placed
             element += 1
-            # when taget number reached,
-            # print manhattan distance to origin
-            if num == max_num:
-                print(abs(origin_coord[0] - coord[0]) + abs(origin_coord[1] - coord[1]))
-        # rotate, before doing another run with same length
+
+        # rotate to do another stretch
         dir_index += 1
         dir_current = dir_list[dir_index % len(dir_list)]
+
+    # increment length every second run
     run_length += 1
 
 #printSpiral() 
