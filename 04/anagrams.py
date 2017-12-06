@@ -1,19 +1,30 @@
 # December 04, challenge 2
+# GOLD STAR GOT
+# Answer: 251
+
 import csv
 
-# checks for repeated words
+# checks for anagrams in phrase
+# two words are anagrams, if they
+# have the same amount of every char
 def is_valid(passphrase):
+    word_id_list = []
     
+    # build word_id dict
     for word in passphrase:
-
-        # check for repetitions
-        if word in words_checked:
+        word_id = {}
+        for char in word:
+            if char in word_id.keys():
+                word_id[char] += 1
+            else:
+                word_id[char] = 1
+        
+        # check list then add
+        if word_id in word_id_list:
             return False
+        word_id_list.append(word_id)
 
-        # add word to list
-        words_checked.append(word)
-
-    # if no repetitions found
+    # return true if no anagrams found
     return True
 
 
