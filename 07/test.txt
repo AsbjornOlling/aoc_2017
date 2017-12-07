@@ -1,0 +1,13 @@
+tknk (41) -> ugml, padx, fwft
+fwft (72) -> ktlj, cntj, xhth
+padx (45) -> pbga, havc, qoyq
+ugml (68) -> gyxo, ebii, jptl
+pbga (66)
+xhth (57)
+ebii (61)
+havc (66)
+ktlj (57)
+qoyq (66)
+jptl (61)
+gyxo (61)
+cntj (57)
