@@ -1,5 +1,6 @@
 # December 07, challenge 1
 # find the bottom program
+# GOLD STAR GOT
 
 class Program:
     def __init__(self, line):
@@ -27,7 +28,7 @@ class Program:
 
 # read file, generate Program objects
 list_of_programs = []
-with open ("test.txt") as input_file:
+with open ("input.txt") as input_file:
     for line in input_file:
         list_of_programs.append(Program(line))
 
