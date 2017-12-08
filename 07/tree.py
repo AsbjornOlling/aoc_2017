@@ -11,9 +11,9 @@ class Program:
         self.name= words_list[0]
         self.weight = int(words_list[1][1:len(words_list[1]) - 1])
         self.children = words_list[3:]
-        for child_string in self.children: # remove trailing commas
-            if child_string[len(child_string)-1] is ",":
-                child_string = child_string[:len(child_string)-1]
+        for i in range(0, len(self.children)): # remove trailing commas
+            if self.children[i][len(self.children[i])-1] == ",":
+                self.children[i] = self.children[i][:len(self.children[i])-1]
 
 
     def debug(self):
@@ -27,7 +27,7 @@ class Program:
 
 # read file, generate Program objects
 list_of_programs = []
-with open ("input.txt") as input_file:
+with open ("test.txt") as input_file:
     for line in input_file:
         list_of_programs.append(Program(line))
 
@@ -40,9 +40,8 @@ for program in list_of_programs:
 
 # then look for programs who's nobodys child:
 for program in list_of_programs:
-    program.debug()
     # only check programs that have children
     if len(program.children):
         if not (program.name in all_children):
-            pass
-            #print(program.name)
+            #program.debug()
+            print(program.name)
