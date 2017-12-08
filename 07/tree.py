@@ -25,6 +25,13 @@ class Program:
                     self.child_objects.append(program)
 
 
+    def weigh_recursive(self):
+        weight = self.weight
+        for child in self.child_objects:
+            weight += child.weigh_recursive()
+        return weight
+
+
 # this is the solution to challenge 1
 def find_bottom_program():
     # if a program is nobody's child, it's the bottom
@@ -53,6 +60,34 @@ for program in list_of_programs:
     program.find_children_objects()
 
 
+# start looking for the program with wrong weight
+#
+# get weight of the programs on bottom plate
+comparison_dict = {}
+for child in find_bottom_program().child_objects:
+    comparison_dict[child] = child.weigh_recursive()
 
- 
-print find_bottom_program().name
+# start looking for the outlier
+# calculate average weight
+average = 0
+for program, weight in comparison_dict.items():
+    average += weight
+average = average / len(comparison_dict)
+# find the program furthest from average weight
+largest_diff = 0
+outlier_program = None
+for program, weight in comparison_dict.items():
+    if abs(weight-average) > largest_diff:
+        largest_diff = abs(weight-average)
+        outlier_program = program
+# ^outlier found
+
+for program, weight in comparison_dict.items():
+    print(program.name + " "+ str(weight))
+print(outlier_program.name)
+
+# WHAT TODO
+# check if balanced
+# if not balanced, check the balance of the outlier
+# do this until balance is found
+# then figure smth out
