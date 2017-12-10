@@ -2,6 +2,8 @@
 # find the bottom program
 # GOLD STAR GOT
 
+import copy
+
 class Program:
     def __init__(self, line):
         # remove newline char
@@ -27,7 +29,7 @@ class Program:
 
 
     def weigh_recursive(self):
-        weight = self.weight
+        weight = copy.deepcopy(self.weight)
         for child in self.child_objects:
             weight += child.weigh_recursive()
         return weight
@@ -87,15 +89,20 @@ def check_balance(plateholder_program):
     # if it's balanced
     else:
         print(plateholder_program.name + "'s plate is balanced!")
+        for program, weight in comparison_dict.items():
+            print(program.name + " "+ str(weight))
+        print("")
 
         # check how much it's off, compared to neighbors
         print("Comparing with "+plateholder_program.name+"'s neighbors")
         for neighbor_program in plateholder_program.parent.child_objects:
-            if neighbor_program.name != plateholder_program:
-                diff = abs(neighbor_program.weight - plateholder_program.weight)
-                print("Checking "+neighbor_program.name+" and "+plateholder_program.name)
+            if neighbor_program.name != plateholder_program.name:
+                diff = abs(neighbor_program.weigh_recursive() - plateholder_program.weigh_recursive())
+                print("Comparing "+neighbor_program.name+" and "+plateholder_program.name)
+                print("Difference between "+str(neighbor_program.weight)+" and "+str(plateholder_program.weight))
                 print("Weight diff found: "+str(diff))
-                print("")
+                print("THE CORRECT WEIGHT FOR "+plateholder_program.name+" IS "+str(plateholder_program.weight - diff))
+                break
 
 
 # read file, generate Program objects
@@ -110,11 +117,3 @@ for program in list_of_programs:
 
 # then start looking for the off-balance program
 check_balance(find_bottom_program())
-
-
-
-# WHAT TODO
-# check if balanced
-# if not balanced, check the balance of the outlier
-# do this until balance is found
-# then figure smth out
