@@ -62,19 +62,20 @@ def check_balance(plateholder_program):
         comparison_dict[child] = child.weigh_recursive()
 
     # start looking for the outlier
-    # calculate average weight
-    average = 0
-    for program, weight in comparison_dict.items():
-        average += weight
-    average = average / len(comparison_dict)
-    # find the program furthest from average weight
-    largest_diff = 0
-    outlier_program = None
-    for program, weight in comparison_dict.items():
-        if abs(weight-average) > largest_diff:
-            largest_diff = abs(weight-average)
-            outlier_program = program
-    # ^outlier found
+    if len(comparison_dict) > 1:
+        # calculate average weight
+        average = 0
+        for program, weight in comparison_dict.items():
+            average += weight
+        average = average / len(comparison_dict)
+        # find the program furthest from average weight
+        largest_diff = 0
+        outlier_program = None
+        for program, weight in comparison_dict.items():
+            if abs(weight-average) > largest_diff:
+                largest_diff = abs(weight-average)
+                outlier_program = program
+        # ^outlier found
 
     # if it's unbalanced
     if outlier_program != None:
