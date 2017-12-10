@@ -1,5 +1,6 @@
-# December 07, challenge 1
+# December 07, challenge 1+2
 # find the bottom program
+# and find the *one* unbalanced program
 # GOLD STAR GOT
 
 import copy
