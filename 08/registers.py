@@ -19,6 +19,12 @@ for line in open("input.txt"):
     condition_operator = line_array[5]
     condition_amount = line_array[6]
 
+    # put registers in dictory if new
+    if not (register in register_db):
+        register_db[register] = 0
+    if not (condition_register in register_db):
+        register_db[condition_register] = 0
+
     # check if condition met
     if (
            (condition_operator == ">" 
@@ -34,10 +40,8 @@ for line in open("input.txt"):
         or (condition_operator == "==" 
             and condition_register == condition_amount)
     ):
-        print(line+" on "+line_no+" met!")
+        print(line.strip("\n") + " on " + str(line_no) + " met!")
 	# increment or decrement if met
-	if not (register in register_db):
-	    register_db[register] = 0
 	if action == "inc":
 	    register_db[register] += amount
             print("Incrementing "+register)
