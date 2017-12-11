@@ -3,6 +3,14 @@
 # initialise vars to use
 register_db = {}
 
+def change_register(action, amount, register):
+    if not (register in register_db):
+        register_db[register] = 0
+    if action == "inc":
+        register_db[register] += amount
+    elif action == "dec":
+        register_db[register] -= amount
+
 # read input file
 for line in open("test.txt"):
     line_array = line.strip("\n").split(" ")
@@ -15,11 +23,17 @@ for line in open("test.txt"):
     condition_operator = line_array[5]
     condition_amount = line_array[6]
 
-    # test
-    print("register: "+register)
-    print("action: "+action)
-    print("amount: "+str(amount))
-    print("condition_register: "+str(condition_register))
-    print("condition_operator: "+str(condition_operator))
-    print("condition_amount: "+str(condition_amount))
+    if condition_operator == ">" and condition_register > condition_amount:
+        change_register(action, amount, register)
+    elif condition_operator == ">=" and condition_register >= condition_amount:
+        change_register(action, amount, register)
+    elif condition_operator == "<" and condition_register < condition_amount:
+        change_register(action, amount, register)
+    elif condition_operator == "<=" and condition_register <= condition_amount:
+        change_register(action, amount, register)
+    elif condition_operator == "!=" and condition_register != condition_amount:
+        change_register(action, amount, register)
+    elif condition_operator == "==" and condition_register == condition_amount:
+        change_register(action, amount, register)
 
+print(max(register_db.iterkeys(), key=(lambda key: register_db[register])))
