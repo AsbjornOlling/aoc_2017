@@ -1,16 +1,12 @@
 # December 10, challenge 2
-# GOLD STAR GOT on challenge 1
-
-## TODO
-
-# then bitwise xor blocks of 16 ( so you have 16 nums ) 
+# GOLD STAR GOT on both challenges
 
 # init vars
 list_length = 256
 suffix = [17, 31, 73, 47, 23]
 
 # read input
-input_file = open("test.txt")
+input_file = open("input.txt")
 
 # really, it's only one line in the real input
 # but is useful for testing
