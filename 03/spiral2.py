@@ -28,15 +28,6 @@ for i in range(0, grid_size):
     grid.append([None] * grid_size)
 
 
-# prints the spiral to stdout
-#def printSpiral():
-#    for row in grid:
-#        for number in row:
-#            if number != None:
-#                sys.stdout.write(number)
-#
-#   sys.stdout.write("\r\n")
-
 
 # do the first element manually
 grid[coord[0]][coord[1]] = 1

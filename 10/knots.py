@@ -26,10 +26,13 @@ for line in input_file:
         substring = []
         for i in range(0, int(substring_length)):
             substring.append(num_list[(cur_pos + i) % list_length])
+
         # reverse substring
         substring = substring[::-1]
-        # now place substring back on num_list
 
+        # now place substring back on num_list
+        for i in range(cur_pos, cur_pos + int(substring_length)):
+            num_list[i % list_length] = 0
 
         cur_pos += int(substring_length) + skip_size
         skip_size += 1
