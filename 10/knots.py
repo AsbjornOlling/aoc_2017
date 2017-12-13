@@ -1,4 +1,5 @@
 # December 10, challenge 1
+# GOLD STAR GOT
 
 # init vars
 cur_pos = 0
@@ -10,7 +11,7 @@ for i in range(0, list_length):
 
 
 # read input
-input_file = open("test.txt")
+input_file = open("input.txt")
 
 # really, it's only one line
 # so this is the main block of code
@@ -29,13 +30,13 @@ for line in input_file:
 
         # reverse substring
         substring = substring[::-1]
-        print(substring)
+        #print(substring)
 
         # now place substring back on num_list
         for i in range(0, int(substring_length)):
             num_list[(cur_pos + i) % list_length] = substring[i]
 
-        print(num_list)
+        #print(num_list)
 
         cur_pos += int(substring_length) + skip_size
         skip_size += 1
