@@ -67,7 +67,7 @@ for line in input_file:
         # make hexadecimal string, pad with 0
         dense_hash_substring = str(hex(xor))[2:]
         while len(dense_hash_substring) < 2:
-            dense_hash_substring = "0" + dense_hash_string
+            dense_hash_substring = "0" + dense_hash_substring
         dense_hash_string += dense_hash_substring
 
     print(dense_hash_string)
