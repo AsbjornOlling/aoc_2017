@@ -1,4 +1,5 @@
-# December 11, challenge 1
+# December 11, challenge 1+2
+# GOLD STARS GOT
 
 # infinite vertical hex grid
 # hex grid built using axial coords
@@ -16,12 +17,14 @@ class hex:
     def __init__(self, coords):
         self.x, self.y = coords
 
-input_file = open("test.txt")
+input_file = open("input.txt")
 
 for line in input_file:
     # init axial grid coords
     x = 0
     y = 0
+
+    max_dist = 0
 
     # move using axial coords
     input_array = line.strip("\n").split(",")
@@ -41,10 +44,13 @@ for line in input_file:
             x -= 1
             y += 1
 
-    # find z coord from axial
-    z = (x + y) * (-1)
+        # find z coord from axial
+        z = (x + y) * (-1)
 
-    # calculate distance
-    dist = (abs(x) + abs(y) + abs(z))/2
+        # calculate distance
+        dist = (abs(x) + abs(y) + abs(z))/2
+        if dist > max_dist:
+            max_dist = dist
 
     print("Distance: " + str(dist))
+    print("Max distance: " + str(max_dist))
